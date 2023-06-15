@@ -1,13 +1,13 @@
 package com.example.proyecto.response;
 
 
-import com.example.proyecto.dto.CursoDTO;
+import com.example.proyecto.dto.ProfesorDTO;
 
-public class CursosResponse {
+public class ProfesorResponse {
     private String resultado;
-    private CursoDTO cursos;
+    private ProfesorDTO cursos;
 
-    public CursosResponse(String resultado, CursoDTO curso) {
+    public ProfesorResponse(String resultado, ProfesorDTO curso) {
         this.resultado = resultado;
         this.cursos = curso;
     }
@@ -20,11 +20,11 @@ public class CursosResponse {
         this.resultado = resultado;
     }
 
-    public CursoDTO getCursos() {
+    public ProfesorDTO getCursos() {
         return cursos;
     }
 
-    public void setCursos(CursoDTO cursos) {
+    public void setCursos(ProfesorDTO cursos) {
         this.cursos = cursos;
     }
 }

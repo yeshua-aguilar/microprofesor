@@ -6,50 +6,50 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.proyecto.dto.CursoDTO;
-import com.example.proyecto.entity.Curso;
-import com.example.proyecto.repository.CursoRepository;
+import com.example.proyecto.dto.ProfesorDTO;
+import com.example.proyecto.entity.Profesor;
+import com.example.proyecto.repository.ProfesorRepository;
 
 @Service
-public class CursoServiceImpl implements CursoService {
+public class ProfesorServiceImpl implements ProfesorService {
 
     @Autowired
-    private CursoRepository cursoRepository;
+    private ProfesorRepository cursoRepository;
 
     @Override
-    public CursoDTO crearCurso(CursoDTO cursoDTO) {
-        Curso curso = new Curso();
+    public ProfesorDTO crearCurso(ProfesorDTO cursoDTO) {
+        Profesor curso = new Profesor();
         curso.setNombre(cursoDTO.getNombre());
-        curso.setCantidadLibro(cursoDTO.getCantidadLibro());
-        curso.setCodigoLibro(cursoDTO.getCodigoLibro());
+        curso.setApellido(cursoDTO.getApellido());
+        curso.setEdad(cursoDTO.getEdad());
         cursoRepository.save(curso);
         cursoDTO.setId(curso.getId());
         return cursoDTO;
     }
 
     @Override
-    public CursoDTO obtenerCursoPorId(int id) {
-        Curso curso = cursoRepository.findById(id).orElse(null);
+    public ProfesorDTO obtenerCursoPorId(int id) {
+        Profesor curso = cursoRepository.findById(id).orElse(null);
         if (curso == null) {
             return null;
         }
-        CursoDTO cursoDTO = new CursoDTO();
+        ProfesorDTO cursoDTO = new ProfesorDTO();
         cursoDTO.setId(curso.getId());
         cursoDTO.setNombre(curso.getNombre());
-        cursoDTO.setCantidadLibro(curso.getCantidadLibro());
-        cursoDTO.setCodigoLibro(curso.getCodigoLibro());
+        cursoDTO.setApellido(curso.getApellido());
+        cursoDTO.setEdad(curso.getEdad());
         return cursoDTO;
     }
 
     @Override
-    public List<CursoDTO> obtenerTodosLosCursos() {
-        List<Curso> cursos = cursoRepository.findAll();
+    public List<ProfesorDTO> obtenerTodosLosCursos() {
+        List<Profesor> cursos = cursoRepository.findAll();
         return cursos.stream().map(curso -> {
-            CursoDTO cursoDTO = new CursoDTO();
+            ProfesorDTO cursoDTO = new ProfesorDTO();
             cursoDTO.setId(curso.getId());
             cursoDTO.setNombre(curso.getNombre());
-            cursoDTO.setCantidadLibro(curso.getCantidadLibro());
-            cursoDTO.setCodigoLibro(curso.getCodigoLibro());
+            cursoDTO.setApellido(curso.getApellido());
+            cursoDTO.setEdad(curso.getEdad());
             return cursoDTO;
         }).collect(Collectors.toList());
     }

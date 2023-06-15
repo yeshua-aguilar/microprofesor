@@ -2,13 +2,13 @@ package com.example.proyecto.response;
 
 import java.util.List;
 
-import com.example.proyecto.dto.CursoDTO;
+import com.example.proyecto.dto.ProfesorDTO;
 
-public class CursosResponse2 {
+public class ProfesorResponse2 {
 	private String resultado;
-    private List<CursoDTO> cursos;
+    private List<ProfesorDTO> cursos;
 
-    public CursosResponse2(String resultado, List<CursoDTO> cursos) {
+    public ProfesorResponse2(String resultado, List<ProfesorDTO> cursos) {
         this.resultado = resultado;
         this.cursos = cursos;
     }
@@ -21,11 +21,11 @@ public class CursosResponse2 {
         this.resultado = resultado;
     }
 
-    public List<CursoDTO> getCurso() {
+    public List<ProfesorDTO> getCurso() {
         return cursos;
     }
 
-    public void setCurso(List<CursoDTO> cursos) {
+    public void setCurso(List<ProfesorDTO> cursos) {
         this.cursos = cursos;
     }
 }
