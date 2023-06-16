@@ -4,23 +4,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.proyecto.dto.ProfesorCursoDTO;
 import com.example.proyecto.entity.ProfesorCurso;
 import com.example.proyecto.repository.ProfesorCursoRepository;
 
 
-
-public class ProfesorCursoServiceImpl {
+@Service
+public class ProfesorCursoServiceImpl implements ProfesorCursoService{
 	
 	@Autowired
     private ProfesorCursoRepository profesorCursoRepository;
 	
 	public ProfesorCursoDTO crearProfesorCurso(ProfesorCursoDTO profesorCursoDTO) {
         ProfesorCurso profesorcurso = new ProfesorCurso();
-        profesorcurso.setIdCurso(profesorCursoDTO.getIdCurso());
-        profesorcurso.setIdProfesor(profesorCursoDTO.getIdCurso());
-        profesorCursoRepository.save(profesorcurso);
         profesorCursoDTO.setId(profesorcurso.getId());
+        profesorcurso.setIdCurso(profesorCursoDTO.getIdCurso());
+        profesorcurso.setIdProfesor(profesorCursoDTO.getIdProfesor());
+        profesorCursoRepository.save(profesorcurso);
         return profesorCursoDTO;
     }
 	

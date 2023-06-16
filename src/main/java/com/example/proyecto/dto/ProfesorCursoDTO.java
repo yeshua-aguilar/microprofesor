@@ -13,8 +13,6 @@ public class ProfesorCursoDTO {
 	
 	private int id;
 	private int idCurso;
-	private String nombreCurso;
 	private int idProfesor;
-	private String nombreProfe;
 
 }

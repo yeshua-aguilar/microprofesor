@@ -12,21 +12,23 @@ public class ProfesorResponse {
         this.cursos = curso;
     }
 
-    public String getResultado() {
-        return resultado;
-    }
+	public String getResultado() {
+		return resultado;
+	}
 
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
-    }
+	public void setResultado(String resultado) {
+		this.resultado = resultado;
+	}
 
-    public ProfesorDTO getCursos() {
-        return cursos;
-    }
+	public ProfesorDTO getCursos() {
+		return cursos;
+	}
 
-    public void setCursos(ProfesorDTO cursos) {
-        this.cursos = cursos;
-    }
+	public void setCursos(ProfesorDTO cursos) {
+		this.cursos = cursos;
+	}
+
+    
 }
 
 

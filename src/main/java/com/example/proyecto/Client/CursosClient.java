@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.proyecto.dto.CursoDTO;
-import com.example.proyecto.response.ProfesorResponse;
-import com.example.proyecto.response.ProfesorResponse2;
+import com.example.proyecto.response.CursosResponse;
+import com.example.proyecto.response.CursosResponse2;
 
-@FeignClient("cursos-service")
+@FeignClient(name = "proyecto", url = "http://localhost:8085")
 public interface CursosClient {
 
     @PostMapping("/cursos")
-    ResponseEntity<ProfesorResponse> crearCurso(@RequestBody CursoDTO cursoDTO);
+    ResponseEntity<CursosResponse> crearCurso(@RequestBody CursoDTO cursoDTO);
     
     @GetMapping("/cursos/{id}")
     ResponseEntity<Object> obtenerCursoPorId(@PathVariable int id);
 
     @GetMapping("/cursos")
-    ResponseEntity<ProfesorResponse2> obtenerTodosLosCursos();
+    ResponseEntity<CursosResponse2> obtenerTodosLosCursos();
 
     @DeleteMapping("/cursos/{id}")
-    ResponseEntity<ProfesorResponse> eliminarCurso(@PathVariable int id);
+    ResponseEntity<CursosResponse> eliminarCurso(@PathVariable int id);
 }
 
