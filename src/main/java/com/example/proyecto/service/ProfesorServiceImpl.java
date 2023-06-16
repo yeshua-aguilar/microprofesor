@@ -14,22 +14,22 @@ import com.example.proyecto.repository.ProfesorRepository;
 public class ProfesorServiceImpl implements ProfesorService {
 
     @Autowired
-    private ProfesorRepository cursoRepository;
+    private ProfesorRepository profesorRepository;
 
     @Override
-    public ProfesorDTO crearCurso(ProfesorDTO cursoDTO) {
+    public ProfesorDTO crearProfesor(ProfesorDTO cursoDTO) {
         Profesor curso = new Profesor();
         curso.setNombre(cursoDTO.getNombre());
         curso.setApellido(cursoDTO.getApellido());
         curso.setEdad(cursoDTO.getEdad());
-        cursoRepository.save(curso);
+        profesorRepository.save(curso);
         cursoDTO.setId(curso.getId());
         return cursoDTO;
     }
 
     @Override
-    public ProfesorDTO obtenerCursoPorId(int id) {
-        Profesor curso = cursoRepository.findById(id).orElse(null);
+    public ProfesorDTO obtenerProfesorPorId(int id) {
+        Profesor curso = profesorRepository.findById(id).orElse(null);
         if (curso == null) {
             return null;
         }
@@ -42,8 +42,8 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public List<ProfesorDTO> obtenerTodosLosCursos() {
-        List<Profesor> cursos = cursoRepository.findAll();
+    public List<ProfesorDTO> obtenerTodosLosProfesores() {
+        List<Profesor> cursos = profesorRepository.findAll();
         return cursos.stream().map(curso -> {
             ProfesorDTO cursoDTO = new ProfesorDTO();
             cursoDTO.setId(curso.getId());
@@ -55,9 +55,9 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public boolean eliminarCurso(int id) {
+    public boolean eliminarProfesor(int id) {
     	try {
-            cursoRepository.deleteById(id);
+    		profesorRepository.deleteById(id);
             return true;
         } catch (Exception e) {
             return false;

@@ -5,8 +5,8 @@ import java.util.List;
 import com.example.proyecto.dto.ProfesorDTO;
 
 public interface ProfesorService {
-    ProfesorDTO crearCurso(ProfesorDTO cursoDTO);
-    ProfesorDTO obtenerCursoPorId(int id);
-    List<ProfesorDTO> obtenerTodosLosCursos();
-    boolean eliminarCurso(int id);
+    ProfesorDTO crearProfesor(ProfesorDTO cursoDTO);
+    ProfesorDTO obtenerProfesorPorId(int id);
+    List<ProfesorDTO> obtenerTodosLosProfesores();
+    boolean eliminarProfesor(int id);
 }
