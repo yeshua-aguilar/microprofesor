@@ -41,17 +41,15 @@ public class ProfesorCursoServiceImpl implements ProfesorCursoService {
 		if (profesorCurso == null) {
 			return null;
 		}
+		
+		CursoDTO curso = cursoFeignClient.obtenerCursoPorId(profesorCurso.getIdCurso());
+		
 		ProfesorCursoDTO profesorCursoDTO = new ProfesorCursoDTO();
 		profesorCursoDTO.setId(profesorCurso.getId());
 		profesorCursoDTO.setIdCurso(profesorCurso.getIdCurso());
+		profesorCursoDTO.setNombreCurso(curso.getNombre());
 		profesorCursoDTO.setIdProfesor(profesorCurso.getIdProfesor());
 		profesorCursoDTO.setNombreProfesor(profesor.getNombre());
-
-		CursoDTO cursoDTO = cursoFeignClient.obtenerCursoPorId(profesorCurso.getIdCurso());
-
-		if (cursoDTO != null) {
-			profesorCursoDTO.setNombreCurso(cursoDTO.getNombre());
-		}
 
 		return profesorCursoDTO;
 	}
