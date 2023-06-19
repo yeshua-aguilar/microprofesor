@@ -5,11 +5,11 @@ import com.example.proyecto.dto.ProfesorDTO;
 
 public class ProfesorResponse {
     private String resultado;
-    private ProfesorDTO cursos;
+    private ProfesorDTO profesor;
 
-    public ProfesorResponse(String resultado, ProfesorDTO curso) {
+    public ProfesorResponse(String resultado, ProfesorDTO profesor) {
         this.resultado = resultado;
-        this.cursos = curso;
+        this.profesor = profesor;
     }
 
 	public String getResultado() {
@@ -20,14 +20,13 @@ public class ProfesorResponse {
 		this.resultado = resultado;
 	}
 
-	public ProfesorDTO getCursos() {
-		return cursos;
+	public ProfesorDTO getProfesor() {
+		return profesor;
 	}
 
-	public void setCursos(ProfesorDTO cursos) {
-		this.cursos = cursos;
+	public void setProfesor(ProfesorDTO profesor) {
+		this.profesor = profesor;
 	}
-
     
 }
 

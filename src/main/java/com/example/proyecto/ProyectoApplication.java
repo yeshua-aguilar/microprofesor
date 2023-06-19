@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Import;
 
-@SpringBootApplication
 @EnableFeignClients
+@SpringBootApplication
 @Import(AppConfig.class)
 public class ProyectoApplication {
 
