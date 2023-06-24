@@ -61,6 +61,7 @@ public class ProfesorCursoServiceImpl implements ProfesorCursoService {
 			ProfesorCursoDTO profesorCursoDTO = new ProfesorCursoDTO();
 			profesorCursoDTO.setId(profesorCurso.getId());
 			profesorCursoDTO.setIdCurso(profesorCurso.getIdCurso());
+			profesorCursoDTO.setIdCurso(profesorCurso.getNombre());
 			profesorCursoDTO.setIdProfesor(profesorCurso.getIdProfesor());
 
 			Profesor profesor = profesores.stream().filter(p -> p.getId() == profesorCurso.getIdProfesor()).findFirst()
