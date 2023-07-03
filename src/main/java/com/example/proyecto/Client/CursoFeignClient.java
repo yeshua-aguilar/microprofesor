@@ -1,10 +1,8 @@
 package com.example.proyecto.Client;
 
 
-import com.example.proyecto.dto.CursoDTO;
-
-import java.util.List;
-
+import com.example.proyecto.response.CursosResponse;
+import com.example.proyecto.response.CursosResponse2;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,10 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CursoFeignClient {
 	
 	@GetMapping("/cursos")
-    List<CursoDTO> obtenerTodosLosCursos();
+	CursosResponse2 obtenerTodosLosCursos();
 
     @GetMapping("/cursos/{id}")
-    CursoDTO obtenerCursoPorId(@PathVariable("id") int id);
+    CursosResponse obtenerCursoPorId(@PathVariable("id") int id);
 }
 
 

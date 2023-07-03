@@ -13,6 +13,7 @@ import com.example.proyecto.entity.Profesor;
 import com.example.proyecto.entity.ProfesorCurso;
 import com.example.proyecto.repository.ProfesorCursoRepository;
 import com.example.proyecto.repository.ProfesorRepository;
+import com.example.proyecto.response.CursosResponse;
 
 @Service
 public class ProfesorCursoServiceImpl implements ProfesorCursoService {
@@ -41,15 +42,26 @@ public class ProfesorCursoServiceImpl implements ProfesorCursoService {
 		if (profesorCurso == null) {
 			return null;
 		}
-		
-		CursoDTO curso = cursoFeignClient.obtenerCursoPorId(profesorCurso.getIdCurso());
-		
+	
 		ProfesorCursoDTO profesorCursoDTO = new ProfesorCursoDTO();
 		profesorCursoDTO.setId(profesorCurso.getId());
 		profesorCursoDTO.setIdCurso(profesorCurso.getIdCurso());
-		profesorCursoDTO.setNombreCurso(curso.getNombre());
 		profesorCursoDTO.setIdProfesor(profesorCurso.getIdProfesor());
 		profesorCursoDTO.setNombreProfesor(profesor.getNombre());
+		
+		try {
+		    // Llamar al método obtenerCursoPorId() del Feign Client para obtener el nombre del curso
+		    CursosResponse cursoResponse = cursoFeignClient.obtenerCursoPorId(profesorCurso.getIdCurso());
+		    if (cursoResponse != null && cursoResponse.getCursos() != null) {
+		        CursoDTO cursoDTO = (CursoDTO) cursoResponse.getCursos();
+		        profesorCursoDTO.setNombreCurso(cursoDTO.getNombre());
+		    }
+		} catch (Exception e) {
+		    // Manejar la excepción aquí
+		    // Puedes imprimir un mensaje de error o realizar cualquier otra acción necesaria
+		    e.printStackTrace();
+		}
+
 
 		return profesorCursoDTO;
 	}
@@ -62,6 +74,19 @@ public class ProfesorCursoServiceImpl implements ProfesorCursoService {
 			profesorCursoDTO.setId(profesorCurso.getId());
 			profesorCursoDTO.setIdCurso(profesorCurso.getIdCurso());
 			profesorCursoDTO.setIdProfesor(profesorCurso.getIdProfesor());
+			
+			try {
+			    // Llamar al método obtenerCursoPorId() del Feign Client para obtener el nombre del curso
+			    CursosResponse cursoResponse = cursoFeignClient.obtenerCursoPorId(profesorCurso.getIdCurso());
+			    if (cursoResponse != null && cursoResponse.getCursos() != null) {
+			        CursoDTO cursoDTO = (CursoDTO) cursoResponse.getCursos();
+			        profesorCursoDTO.setNombreCurso(cursoDTO.getNombre());
+			    }
+			} catch (Exception e) {
+			    // Manejar la excepción aquí
+			    // Puedes imprimir un mensaje de error o realizar cualquier otra acción necesaria
+			    e.printStackTrace();
+			}
 
 			Profesor profesor = profesores.stream().filter(p -> p.getId() == profesorCurso.getIdProfesor()).findFirst()
 					.orElse(null);
