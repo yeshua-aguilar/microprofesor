@@ -7,6 +7,10 @@ import com.example.proyecto.dto.ProfesorDTO;
 public class ProfesorResponse2 {
 	private String resultado;
     private List<ProfesorDTO> profesor;
+    
+    public ProfesorResponse2() {
+    	
+    }
 
     public ProfesorResponse2(String resultado, List<ProfesorDTO> profesor) {
         this.resultado = resultado;

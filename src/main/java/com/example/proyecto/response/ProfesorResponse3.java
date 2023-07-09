@@ -6,6 +6,10 @@ import com.example.proyecto.dto.ProfesorCursoDTO;
 public class ProfesorResponse3 {
     private String resultado;
     private ProfesorCursoDTO cursos;
+    
+public ProfesorResponse3() {
+    	
+    }
 
     public ProfesorResponse3(String resultado, ProfesorCursoDTO profesorcurso) {
         this.resultado = resultado;

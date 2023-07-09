@@ -15,6 +15,7 @@ public interface CursoFeignClient {
 
     @GetMapping("/cursos/{id}")
     CursosResponse obtenerCursoPorId(@PathVariable("id") int id);
+    
 }
 
 

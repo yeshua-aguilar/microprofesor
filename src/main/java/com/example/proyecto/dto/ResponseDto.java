@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseDTO {
+
+public class ResponseDto {
 	private String codigo;
 	private String mensaje;
 	private Object data;
